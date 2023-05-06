@@ -1,55 +1,51 @@
 .container {
-    margin: 0 auto;
-    width: 500px;
-  }
-  
-  .board {
-    display: inline-block;
-    margin: 20px 0;
-    position: relative;
-  }
-  
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin: 0;
-    padding: 0;
-    position: relative;
-  }
-  
-  td {
-    border: 1px solid #000;
-    font-size: 20px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    vertical-align: middle;
-    width: 50px;
-  }
-  
-  .white {
-    background-color: #00ccff;
-  }
-  
-  .black {
-    background-color: #0099ff;
-    color: #000;
-  }
-  
-  .highlight {
-    background-color: yellow;
-    color: black;
-  }
-  
-  .valid-move {
-    color: #fff;
-  }
-  
-  .highlight .valid-move {
-    background-color: #00ccff;
-    color: #fff;
-  }
-  
-  .start {
-    color: yellow
-  }
+  margin: 0 auto;
+  width: 500px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.board {
+  display: inline-block;
+  margin: 20px 0;
+  position: relative;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+td {
+  border: 1px solid #000;
+  font-size: 20px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  width: 50px;
+}
+
+.white {
+  background-color: #00ccff;
+  color: #000;
+}
+
+.black {
+  background-color: #0099ff;
+  color: #000;
+}
+
+.valid-move {
+  color: #fff;
+  cursor: pointer;
+}
+
+.start {
+  color: yellow;
+}
