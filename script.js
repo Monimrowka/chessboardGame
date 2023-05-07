@@ -4,15 +4,18 @@ const squares = board.querySelectorAll("td");
 // Generate a random starting square
 const randomRow = Math.floor(Math.random() * 8);
 const randomCol = Math.floor(Math.random() * 8);
-const startingSquare = String.fromCharCode(97 + randomCol) + (randomRow + 1);
+const startingSquare = String.fromCharCode(97 + randomCol) + (8 - randomRow);
 
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
+// Update the URL with the starting square
+const urlParams = new URLSearchParams(window.location.search);
+urlParams.set('start', startingSquare);
+window.history.replaceState(null, null, "?"+urlParams.toString());
+
 const rightSquare = urlParams.get("right");
 const columnLookup = { a: 0, b: 1, c: 2, d: 3, e: 4, f: 5, g: 6, h: 7 };
 
 if (startingSquare !== null) {
-  const row = startingSquare[1] - 1;
+  const row = 8 - parseInt(startingSquare[1]);
   const col = columnLookup[startingSquare[0]];
   let currentSquare = squares[row * 8 + col];
 
@@ -53,9 +56,14 @@ if (startingSquare !== null) {
 
   // Add highlighting to the starting square and valid moves
   function highlightMoves(startSquare) {
+    // Return if startSquare is not a valid DOM element
+    if (!startSquare || !startSquare.classList) {
+      return;
+    }
+  
     startSquare.classList.add("highlight");
     startSquare.classList.add("yellow");
-    
+  
     const validMoves = getValidMoves(startSquare);
     validMoves.forEach((move) => {
       move.classList.add("valid-move");
@@ -67,23 +75,24 @@ if (startingSquare !== null) {
             square.classList.remove("valid-move");
           }
         });
-
+  
         // Move the knight to the clicked square and highlight it
         move.innerHTML = "&#9822;";
         move.classList.add("highlight");
-
+  
         // Remove the knight from the starting square
         currentSquare.innerHTML = "";
         currentSquare.classList.remove("black");
-
+  
         // Update the current square to the new location
         currentSquare = move;
-
+  
         // Highlight valid moves from the new location
         highlightMoves(currentSquare);
       });
     });
   }
+    
 
   // Mark the starting square and valid moves on page load
   highlightMoves(currentSquare);
