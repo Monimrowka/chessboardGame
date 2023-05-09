@@ -29,16 +29,19 @@ td {
   text-align: center;
   vertical-align: middle;
   width: 50px;
+
 }
 
 .white {
   background-color: #00ccff;
   color: #000;
+
 }
 
 .black {
   background-color: #0099ff;
   color: #000;
+ 
 }
 
 .valid-move {
@@ -46,10 +49,12 @@ td {
   cursor: pointer;
 }
 
-.start {
-  color: yellow;
-}
-/* 
+
 .highlight {
+  color: white;
+}
+
+.yellow {
   color: yellow;
-} */
+  
+}

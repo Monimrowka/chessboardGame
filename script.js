@@ -8,8 +8,8 @@ const startingSquare = String.fromCharCode(97 + randomCol) + (8 - randomRow);
 
 // Update the URL with the starting square
 const urlParams = new URLSearchParams(window.location.search);
-urlParams.set('start', startingSquare);
-window.history.replaceState(null, null, "?"+urlParams.toString());
+urlParams.set("start", startingSquare);
+window.history.replaceState(null, null, "?" + urlParams.toString());
 
 const rightSquare = urlParams.get("right");
 const columnLookup = { a: 0, b: 1, c: 2, d: 3, e: 4, f: 5, g: 6, h: 7 };
@@ -60,10 +60,10 @@ if (startingSquare !== null) {
     if (!startSquare || !startSquare.classList) {
       return;
     }
-  
+
     startSquare.classList.add("highlight");
     startSquare.classList.add("yellow");
-  
+
     const validMoves = getValidMoves(startSquare);
     validMoves.forEach((move) => {
       move.classList.add("valid-move");
@@ -75,28 +75,24 @@ if (startingSquare !== null) {
             square.classList.remove("valid-move");
           }
         });
-  
-        // Move the knight to the clicked square and highlight it
-        move.innerHTML = "&#9822;";
-        move.classList.add("highlight");
-  
-        // Remove the knight from the starting square
-        currentSquare.innerHTML = "";
-        currentSquare.classList.remove("black");
-  
+
+        // Change the color of the previous square's font to white
+        startSquare.classList.remove("yellow");
+
+        // Change the color of the new square's font to yellow
+        move.classList.add("yellow");
+
         // Update the current square to the new location
         currentSquare = move;
-  
+
         // Highlight valid moves from the new location
         highlightMoves(currentSquare);
       });
     });
   }
-    
 
   // Mark the starting square and valid moves on page load
   highlightMoves(currentSquare);
   currentSquare.classList.add("start");
   currentSquare.classList.add("yellow");
-  currentSquare.classList.remove("black");
 }
